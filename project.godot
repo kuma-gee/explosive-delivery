@@ -10,9 +10,9 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "AimDirection",
+"class": "AimDirectionTop2D",
 "language": "GDScript",
-"path": "res://src/prototyping/AimDirection.gd"
+"path": "res://src/prototyping/AimDirectionTop2D.gd"
 }, {
 "base": "Reference",
 "class": "ArgumentParser",
@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Logger.gd"
 }, {
+"base": "Node",
+"class": "MoveDirectionTop2D",
+"language": "GDScript",
+"path": "res://src/prototyping/MoveDirectionTop2D.gd"
+}, {
 "base": "Reference",
 "class": "OptParse",
 "language": "GDScript",
@@ -63,6 +68,11 @@ _global_script_classes=[ {
 "class": "PlayerInput",
 "language": "GDScript",
 "path": "res://src/input/PlayerInput.gd"
+}, {
+"base": "Node",
+"class": "PlayerMoveTop2D",
+"language": "GDScript",
+"path": "res://src/prototyping/PlayerMoveTop2D.gd"
 }, {
 "base": "Reference",
 "class": "Stylesheet",
@@ -90,7 +100,7 @@ _global_script_classes=[ {
 "path": "res://tests/UnitTest.gd"
 } ]
 _global_script_class_icons={
-"AimDirection": "",
+"AimDirectionTop2D": "",
 "ArgumentParser": "",
 "CSSParser": "",
 "CSSSimplifier": "",
@@ -98,9 +108,11 @@ _global_script_class_icons={
 "FadeEffect": "",
 "InputReader": "",
 "Logger": "",
+"MoveDirectionTop2D": "",
 "OptParse": "",
 "Options": "",
 "PlayerInput": "",
+"PlayerMoveTop2D": "",
 "Stylesheet": "",
 "ThemeApplier": "",
 "TouchReader": "",
