@@ -13,9 +13,9 @@ jobs:
     strategy:
       matrix:
         # Remove channel if not releasing (Available: win, linux, mac, web, android)
-        channel: [win, linux, mac, web, android]
+        channel: [win, linux]
     env:
-      GAME: ##VAR_GAME_NAME
+      GAME: explosive-delivery
       CHANNEL: ${{matrix.channel}}
     steps:
       - uses: actions/checkout@v2
