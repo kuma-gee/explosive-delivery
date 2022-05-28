@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/effect/FadeEffect.gd"
 }, {
+"base": "VisibilityNotifier2D",
+"class": "FreeOnExit2D",
+"language": "GDScript",
+"path": "res://src/prototyping/FreeOnExit2D.gd"
+}, {
 "base": "Node",
 "class": "InputReader",
 "language": "GDScript",
@@ -49,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Logger.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "MoveDirectionTop2D",
 "language": "GDScript",
 "path": "res://src/prototyping/MoveDirectionTop2D.gd"
@@ -106,6 +111,7 @@ _global_script_class_icons={
 "CSSSimplifier": "",
 "Effect": "",
 "FadeEffect": "",
+"FreeOnExit2D": "",
 "InputReader": "",
 "Logger": "",
 "MoveDirectionTop2D": "",
