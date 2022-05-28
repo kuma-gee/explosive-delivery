@@ -1,4 +1,4 @@
-class_name InputReader extends Node
+class_name TouchReader extends Node
 
 signal swipe(left)
 

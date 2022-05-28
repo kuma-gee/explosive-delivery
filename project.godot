@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AimDirection",
+"language": "GDScript",
+"path": "res://src/prototyping/AimDirection.gd"
+}, {
 "base": "Reference",
 "class": "ArgumentParser",
 "language": "GDScript",
@@ -37,7 +42,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "InputReader",
 "language": "GDScript",
-"path": "res://src/InputReader.gd"
+"path": "res://src/input/InputReader.gd"
 }, {
 "base": "Reference",
 "class": "Logger",
@@ -54,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-css-theme/Options.gd"
 }, {
+"base": "InputReader",
+"class": "PlayerInput",
+"language": "GDScript",
+"path": "res://src/input/PlayerInput.gd"
+}, {
 "base": "Reference",
 "class": "Stylesheet",
 "language": "GDScript",
@@ -63,6 +73,11 @@ _global_script_classes=[ {
 "class": "ThemeApplier",
 "language": "GDScript",
 "path": "res://addons/godot-css-theme/ThemeApplier.gd"
+}, {
+"base": "Node",
+"class": "TouchReader",
+"language": "GDScript",
+"path": "res://src/input/TouchReader.gd"
 }, {
 "base": "Tween",
 "class": "TweenEffect",
@@ -75,6 +90,7 @@ _global_script_classes=[ {
 "path": "res://tests/UnitTest.gd"
 } ]
 _global_script_class_icons={
+"AimDirection": "",
 "ArgumentParser": "",
 "CSSParser": "",
 "CSSSimplifier": "",
@@ -84,8 +100,10 @@ _global_script_class_icons={
 "Logger": "",
 "OptParse": "",
 "Options": "",
+"PlayerInput": "",
 "Stylesheet": "",
 "ThemeApplier": "",
+"TouchReader": "",
 "TweenEffect": "",
 "UnitTest": ""
 }
@@ -113,6 +131,60 @@ window/stretch/aspect="keep_width"
 
 theme/custom="res://theme/theme.tres"
 theme/custom_font="res://theme/jackeyfont.tres"
+
+[input]
+
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+ ]
+}
+move_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
+ ]
+}
+move_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
+ ]
+}
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
+ ]
+}
+aim_up={
+"deadzone": 0.1,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":-1.0,"script":null)
+ ]
+}
+aim_down={
+"deadzone": 0.1,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":1.0,"script":null)
+ ]
+}
+aim_left={
+"deadzone": 0.1,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":2,"axis_value":-1.0,"script":null)
+ ]
+}
+aim_right={
+"deadzone": 0.1,
+"events": [ Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":2,"axis_value":1.0,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="static"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="pickup"
 
 [physics]
 

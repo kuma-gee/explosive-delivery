@@ -11,6 +11,9 @@ After creating the repository with this template do the following:
 - If releasing on android
   - Run `scripts/android-keystore.sh <GAME_NAME>`
 
+### Prototyping
+
+The folder `src/prototyping` contains basic code like player movement, camera, etc for easy prototyping.
 
 ### Branches
 
