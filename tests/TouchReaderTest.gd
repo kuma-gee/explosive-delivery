@@ -1,10 +1,10 @@
 extends UnitTest
 
-var input: InputReader
+var input: TouchReader
 
 
 func before_each():
-	input = autofree(InputReader.new())
+	input = autofree(TouchReader.new())
 	input.swipe_threshold = 10
 	watch_signals(input)
 

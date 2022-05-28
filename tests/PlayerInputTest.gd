@@ -28,13 +28,13 @@ func test_only_read_joypad_if_enabled():
 
 
 func test_device_id():
-	var input = autofree(PlayerInput.new(100))
+	player_input.device_id = 100
 
 	var ev = press_key("move_left")
 
-	input.handle_input(ev)
-	assert_false(input.is_pressed("move_left"))
+	player_input.handle_input(ev)
+	assert_false(player_input.is_pressed("move_left"))
 
 	ev.device = 100
-	input.handle_input(ev)
-	assert_true(input.is_pressed("move_left"))
+	player_input.handle_input(ev)
+	assert_true(player_input.is_pressed("move_left"))
