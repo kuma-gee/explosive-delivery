@@ -1,16 +1,17 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://src/prototyping/PlayerMoveTop2D.gd" type="Script" id=1]
-[ext_resource path="res://src/prototyping/MoveDirectionTop2D.gd" type="Script" id=2]
-[ext_resource path="res://src/prototyping/Body2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/prototyping/behaviour/PlayerMoveTop2D.gd" type="Script" id=1]
+[ext_resource path="res://src/prototyping/behaviour/MoveDirectionTop2D.gd" type="Script" id=2]
 [ext_resource path="res://src/input/PlayerInput.gd" type="Script" id=4]
-[ext_resource path="res://src/prototyping/AimDirectionTop2D.gd" type="Script" id=5]
-[ext_resource path="res://src/prototyping/FreeOnExit2D.gd" type="Script" id=6]
+[ext_resource path="res://src/prototyping/behaviour/AimDirectionTop2D.gd" type="Script" id=5]
+[ext_resource path="res://src/prototyping/behaviour/FreeOnExit2D.gd" type="Script" id=6]
+[ext_resource path="res://src/prototyping/Object2D.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Node2D"]
 
-[node name="Obstacle" parent="." instance=ExtResource( 3 )]
-position = Vector2( 60, 159 )
+[node name="Obstacle" type="KinematicBody2D" parent="."]
+position = Vector2( 67, 167 )
+collision_mask = 0
 
 [node name="MoveDirection" type="Node" parent="Obstacle"]
 script = ExtResource( 2 )
@@ -18,8 +19,21 @@ script = ExtResource( 2 )
 [node name="FreeOnExit2D" type="VisibilityNotifier2D" parent="Obstacle"]
 script = ExtResource( 6 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 282, 46 )
+[node name="Object2D" parent="Obstacle" instance=ExtResource( 8 )]
+
+[node name="ColorRect" parent="Obstacle/Object2D" index="0"]
+color = Color( 1, 0.694118, 0.694118, 1 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 237, 99 )
+collision_layer = 2
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+update_rotation = false
+update_scale = false
+
+[node name="Object2D" parent="Player" instance=ExtResource( 8 )]
 
 [node name="PlayerInput" type="Node" parent="Player"]
 script = ExtResource( 4 )
@@ -31,3 +45,9 @@ input_path = NodePath("../PlayerInput")
 [node name="PlayerMoveTop2D" type="Node" parent="Player"]
 script = ExtResource( 1 )
 input_path = NodePath("../PlayerInput")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 237, 99 )
+current = true
+
+[editable path="Obstacle/Object2D"]

@@ -15,10 +15,8 @@ func _get_aim_direction(node: Node2D) -> Vector2:
 	if aim_mouse:
 		dir = node.global_position.direction_to(node.get_global_mouse_position())
 	else:
-		var aim_dir = _input_aim()
-#		if aim_dir.length() > 0.1:
-		dir = aim_dir
-	
+		dir = _input_aim()
+
 	return dir.normalized()
 
 func _input_aim() -> Vector2:
