@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-css-theme/Options.gd"
 }, {
+"base": "Area2D",
+"class": "PickupItem",
+"language": "GDScript",
+"path": "res://src/prototyping/behaviour/PickupItem.gd"
+}, {
 "base": "InputReader",
 "class": "PlayerInput",
 "language": "GDScript",
@@ -117,6 +122,7 @@ _global_script_class_icons={
 "MoveDirectionTop2D": "",
 "OptParse": "",
 "Options": "",
+"PickupItem": "",
 "PlayerInput": "",
 "PlayerMoveTop2D": "",
 "Stylesheet": "",

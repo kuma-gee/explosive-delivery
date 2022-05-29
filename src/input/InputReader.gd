@@ -14,6 +14,7 @@ var action_strength = {}
 
 
 func handle_input(event: InputEvent):
+	just_pressed = []
 	_update_action_strength(event)
 
 	var actions = _get_actions_for_event(event)
@@ -31,10 +32,6 @@ func _register_action(event: InputEvent, action: String):
 	if event.is_action_released(action):
 		if inputs.has(action):
 			inputs.erase(action)
-
-
-func _process(_delta):
-	just_pressed = []
 
 
 func _update_action_strength(event: InputEvent) -> void:
