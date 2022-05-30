@@ -10,13 +10,130 @@
 [ext_resource path="res://src/prototyping/Object2D.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/prototyping/Item2D.tscn" type="PackedScene" id=9]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 5, 20 )
-
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 20, 20 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5, 20 )
+
 [node name="Main" type="Node2D"]
+
+[node name="Truck" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Truck"]
+margin_left = 119.0
+margin_top = 275.0
+margin_right = 255.0
+margin_bottom = 463.0
+color = Color( 0.262745, 0.262745, 0.262745, 1 )
+
+[node name="PickupItem" type="Area2D" parent="Truck"]
+position = Vector2( 140, 300 )
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 7 )
+pickup_item = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Truck/PickupItem"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Truck/PickupItem"]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Object2D" parent="Truck/PickupItem/StaticBody2D" instance=ExtResource( 8 )]
+
+[node name="ColorRect" parent="Truck/PickupItem/StaticBody2D/Object2D/Sprite2D" index="0"]
+color = Color( 0.74902, 1, 0.635294, 1 )
+
+[node name="PickupItem2" type="Area2D" parent="Truck"]
+position = Vector2( 140, 359 )
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 7 )
+pickup_item = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Truck/PickupItem2"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Truck/PickupItem2"]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Object2D" parent="Truck/PickupItem2/StaticBody2D" instance=ExtResource( 8 )]
+
+[node name="PickupItem3" type="Area2D" parent="Truck"]
+position = Vector2( 140, 416 )
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 7 )
+pickup_item = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Truck/PickupItem3"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Truck/PickupItem3"]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Object2D" parent="Truck/PickupItem3/StaticBody2D" instance=ExtResource( 8 )]
+
+[node name="PickupItem4" type="Area2D" parent="Truck"]
+position = Vector2( 234, 415 )
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 7 )
+pickup_item = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Truck/PickupItem4"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Truck/PickupItem4"]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Object2D" parent="Truck/PickupItem4/StaticBody2D" instance=ExtResource( 8 )]
+
+[node name="PickupItem5" type="Area2D" parent="Truck"]
+position = Vector2( 233, 357 )
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 7 )
+pickup_item = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Truck/PickupItem5"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Truck/PickupItem5"]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Object2D" parent="Truck/PickupItem5/StaticBody2D" instance=ExtResource( 8 )]
+
+[node name="PickupItem6" type="Area2D" parent="Truck"]
+position = Vector2( 234, 301 )
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 7 )
+pickup_item = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Truck/PickupItem6"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Truck/PickupItem6"]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Object2D" parent="Truck/PickupItem6/StaticBody2D" instance=ExtResource( 8 )]
+
+[node name="PickupItem7" type="Area2D" parent="Truck"]
+position = Vector2( 188, 443 )
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 7 )
+pickup_item = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Truck/PickupItem7"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Truck/PickupItem7"]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Object2D" parent="Truck/PickupItem7/StaticBody2D" instance=ExtResource( 8 )]
 
 [node name="Obstacle" type="KinematicBody2D" parent="."]
 position = Vector2( 67, 167 )
@@ -67,23 +184,12 @@ position = Vector2( 237, 99 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="PickupItem" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 0
-script = ExtResource( 7 )
-pickup_item = ExtResource( 9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupItem"]
-shape = SubResource( 3 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="PickupItem"]
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Object2D" parent="PickupItem/StaticBody2D" instance=ExtResource( 8 )]
-
-[node name="ColorRect" parent="PickupItem/StaticBody2D/Object2D/Sprite2D" index="0"]
-color = Color( 0.74902, 1, 0.635294, 1 )
-
+[editable path="Truck/PickupItem/StaticBody2D/Object2D"]
+[editable path="Truck/PickupItem/StaticBody2D/Object2D/Sprite2D"]
+[editable path="Truck/PickupItem2/StaticBody2D/Object2D"]
+[editable path="Truck/PickupItem3/StaticBody2D/Object2D"]
+[editable path="Truck/PickupItem4/StaticBody2D/Object2D"]
+[editable path="Truck/PickupItem5/StaticBody2D/Object2D"]
+[editable path="Truck/PickupItem6/StaticBody2D/Object2D"]
+[editable path="Truck/PickupItem7/StaticBody2D/Object2D"]
 [editable path="Obstacle/Object2D"]
-[editable path="PickupItem/StaticBody2D/Object2D"]
-[editable path="PickupItem/StaticBody2D/Object2D/Sprite2D"]
