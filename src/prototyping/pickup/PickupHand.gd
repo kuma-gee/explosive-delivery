@@ -6,13 +6,17 @@ onready var input: PlayerInput = get_node(input_path)
 var holding_item: PickupItem
 var item: Node2D
 
-func _unhandled_input(_event):
-	if input.is_just_pressed("interact"):
+func _ready():
+	input.connect("just_released", self, "_on_just_released")
+
+func _on_just_released(action: String):
+	if action == "interact":
 		if not holding_item:
 			_pickup_item()
 		else:
 			_place_item()
-				
+			
+
 func _pickup_item():
 	var closest_item = null
 	var closest_item_dot_scale = -1
@@ -42,4 +46,4 @@ func _place_item():
 	holding_item.global_position = global_position
 	holding_item = null
 	item.queue_free()
-	
+

@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/prototyping/state/PlayerMoveTop2D.gd" type="Script" id=1]
-[ext_resource path="res://src/prototyping/state/MoveDirectionTop2D.gd" type="Script" id=2]
 [ext_resource path="res://src/prototyping/pickup/PickupHand.gd" type="Script" id=3]
 [ext_resource path="res://src/input/PlayerInput.gd" type="Script" id=4]
 [ext_resource path="res://src/prototyping/behaviour/AimDirectionTop2D.gd" type="Script" id=5]
-[ext_resource path="res://src/prototyping/behaviour/FreeOnExit2D.gd" type="Script" id=6]
+[ext_resource path="res://src/domain/Obstacle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/prototyping/pickup/PickupItem.gd" type="Script" id=7]
 [ext_resource path="res://src/prototyping/Object2D.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/prototyping/Item2D.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/prototyping/behaviour/Spawner.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 20, 20 )
@@ -135,18 +135,6 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="Object2D" parent="Truck/PickupItem7/StaticBody2D" instance=ExtResource( 8 )]
 
-[node name="Obstacle" type="KinematicBody2D" parent="."]
-position = Vector2( 67, 167 )
-collision_mask = 0
-
-[node name="MoveDirection" type="Node" parent="Obstacle"]
-script = ExtResource( 2 )
-
-[node name="FreeOnExit2D" type="VisibilityNotifier2D" parent="Obstacle"]
-script = ExtResource( 6 )
-
-[node name="Object2D" parent="Obstacle" instance=ExtResource( 8 )]
-
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 237, 99 )
 collision_layer = 2
@@ -184,6 +172,22 @@ position = Vector2( 237, 99 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
+[node name="Spawner" type="Timer" parent="."]
+autostart = true
+script = ExtResource( 10 )
+spawn_objects = [ ExtResource( 6 ) ]
+
+[node name="SpawnPoint" type="Position2D" parent="Spawner"]
+position = Vector2( 25, 193 )
+
+[node name="SpawnPoint2" type="Position2D" parent="Spawner"]
+position = Vector2( 25, 141 )
+
+[node name="SpawnPoint3" type="Position2D" parent="Spawner"]
+position = Vector2( 25, 93 )
+
+[connection signal="just_released" from="Player/PlayerInput" to="Truck/PickupItem" method="_on_PlayerInput_just_released"]
+
 [editable path="Truck/PickupItem/StaticBody2D/Object2D"]
 [editable path="Truck/PickupItem/StaticBody2D/Object2D/Sprite2D"]
 [editable path="Truck/PickupItem2/StaticBody2D/Object2D"]
@@ -192,4 +196,3 @@ zoom = Vector2( 0.5, 0.5 )
 [editable path="Truck/PickupItem5/StaticBody2D/Object2D"]
 [editable path="Truck/PickupItem6/StaticBody2D/Object2D"]
 [editable path="Truck/PickupItem7/StaticBody2D/Object2D"]
-[editable path="Obstacle/Object2D"]
