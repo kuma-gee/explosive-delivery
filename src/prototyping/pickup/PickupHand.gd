@@ -3,19 +3,47 @@ extends Area2D
 export var input_path: NodePath
 onready var input: PlayerInput = get_node(input_path)
 
+export var max_throw_strength = 50
+
 var holding_item: PickupItem
 var item: Node2D
 
+var throw_strength = 0
+var throw_activate_threshold = 0.2
+
+var interact_pressing = -1
+
 func _ready():
 	input.connect("just_released", self, "_on_just_released")
+	input.connect("just_pressed", self, "_on_just_pressed")
 
 func _on_just_released(action: String):
 	if action == "interact":
+		interact_pressing = -1
+		
 		if not holding_item:
 			_pickup_item()
 		else:
-			_place_item()
+			if throw_strength > 0:
+				print(throw_strength)
+				throw_strength = 0
+			else:
+				_place_item()
 			
+
+func _on_just_pressed(action: String):
+	if action == "interact":
+		interact_pressing = 0
+			
+
+func _process(delta):
+	if interact_pressing >= 0:
+		interact_pressing += delta
+		print("increase: " + str(interact_pressing))
+	
+	if interact_pressing >= throw_activate_threshold and holding_item:
+		throw_strength = clamp(throw_strength + 1, 0, max_throw_strength)
+
 
 func _pickup_item():
 	var closest_item = null

@@ -186,8 +186,6 @@ position = Vector2( 25, 141 )
 [node name="SpawnPoint3" type="Position2D" parent="Spawner"]
 position = Vector2( 25, 93 )
 
-[connection signal="just_released" from="Player/PlayerInput" to="Truck/PickupItem" method="_on_PlayerInput_just_released"]
-
 [editable path="Truck/PickupItem/StaticBody2D/Object2D"]
 [editable path="Truck/PickupItem/StaticBody2D/Object2D/Sprite2D"]
 [editable path="Truck/PickupItem2/StaticBody2D/Object2D"]
