@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/prototyping/player/PlayerMoveTop2D.gd" type="Script" id=1]
 [ext_resource path="res://src/prototyping/behaviour/PickupArea.gd" type="Script" id=2]
@@ -13,41 +13,48 @@ extents = Vector2( 20, 20 )
 
 [sub_resource type="RectangleShape2D" id=5]
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 50, 50 )
+
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 20 )
 
 [node name="Main" type="Node2D"]
 
-[node name="Truck" type="Node2D" parent="."]
+[node name="PickupItem" parent="." instance=ExtResource( 6 )]
+collision_mask = 1
 
-[node name="ColorRect" type="ColorRect" parent="Truck"]
-margin_left = 119.0
-margin_top = 275.0
-margin_right = 255.0
-margin_bottom = 463.0
-color = Color( 0.262745, 0.262745, 0.262745, 1 )
-
-[node name="PickupItem" parent="Truck" instance=ExtResource( 6 )]
-
-[node name="Projectile2D" parent="Truck/PickupItem" index="0"]
+[node name="Projectile2D" parent="PickupItem" index="0"]
 deceleration = 50
+weight = 2.0
 
-[node name="PickupArea" type="Area2D" parent="Truck/PickupItem"]
+[node name="PickupArea" type="Area2D" parent="PickupItem"]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Truck/PickupItem/PickupArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupItem/PickupArea"]
 shape = SubResource( 6 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Truck/PickupItem"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupItem"]
 shape = SubResource( 5 )
 
-[node name="Object2D" parent="Truck/PickupItem" instance=ExtResource( 8 )]
+[node name="Object2D" parent="PickupItem" instance=ExtResource( 8 )]
 scale = Vector2( 0.5, 0.5 )
 
-[node name="ColorRect" parent="Truck/PickupItem/Object2D/Sprite2D" index="0"]
+[node name="ColorRect" parent="PickupItem/Object2D/Sprite2D" index="0"]
 color = Color( 0.74902, 1, 0.635294, 1 )
+
+[node name="Truck" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Truck"]
+margin_right = 100.0
+margin_bottom = 100.0
+color = Color( 0.262745, 0.262745, 0.262745, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Truck"]
+position = Vector2( 50, 50 )
+shape = SubResource( 7 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 237, 99 )
@@ -88,6 +95,6 @@ position = Vector2( 237, 99 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[editable path="Truck/PickupItem"]
-[editable path="Truck/PickupItem/Object2D"]
-[editable path="Truck/PickupItem/Object2D/Sprite2D"]
+[editable path="PickupItem"]
+[editable path="PickupItem/Object2D"]
+[editable path="PickupItem/Object2D/Sprite2D"]
