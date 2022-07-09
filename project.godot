@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Reference",
 "class": "AimDirectionTop2D",
 "language": "GDScript",
 "path": "res://src/prototyping/player/AimDirectionTop2D.gd"
@@ -54,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Logger.gd"
 }, {
-"base": "Node",
-"class": "MoveDirectionTop2D",
-"language": "GDScript",
-"path": "res://src/prototyping/behaviour/MoveDirectionTop2D.gd"
-}, {
 "base": "Reference",
 "class": "OptParse",
 "language": "GDScript",
@@ -69,7 +64,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-css-theme/Options.gd"
 }, {
-"base": "Reference",
+"base": "Area2D",
+"class": "PickupArea",
+"language": "GDScript",
+"path": "res://src/prototyping/behaviour/PickupArea.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "PickupItem",
 "language": "GDScript",
 "path": "res://src/prototyping/behaviour/PickupItem.gd"
@@ -79,10 +79,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/input/PlayerInput.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "PlayerMoveTop2D",
 "language": "GDScript",
 "path": "res://src/prototyping/player/PlayerMoveTop2D.gd"
+}, {
+"base": "Node",
+"class": "Projectile2D",
+"language": "GDScript",
+"path": "res://src/prototyping/behaviour/Projectile2D.gd"
 }, {
 "base": "Timer",
 "class": "Spawner",
@@ -124,12 +129,13 @@ _global_script_class_icons={
 "FreeOnExit2D": "",
 "InputReader": "",
 "Logger": "",
-"MoveDirectionTop2D": "",
 "OptParse": "",
 "Options": "",
+"PickupArea": "",
 "PickupItem": "",
 "PlayerInput": "",
 "PlayerMoveTop2D": "",
+"Projectile2D": "",
 "Spawner": "",
 "Stylesheet": "",
 "ThemeApplier": "",

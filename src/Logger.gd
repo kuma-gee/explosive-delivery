@@ -9,7 +9,7 @@ enum Level {
 }
 
 var name = ""
-var levels = [Level.INFO]
+var levels = [Level.INFO, Level.DEBUG]
 
 func _init(n: String):
 	name = n
