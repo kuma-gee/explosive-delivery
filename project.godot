@@ -79,7 +79,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/input/PlayerInput.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "PlayerMoveTop2D",
 "language": "GDScript",
 "path": "res://src/prototyping/state/PlayerMoveTop2D.gd"
