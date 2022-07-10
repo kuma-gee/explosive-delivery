@@ -3,7 +3,8 @@ class_name Projectile2D extends Node
 export var deceleration := 500
 export var weight := 1.0
 
-onready var body: KinematicBody2D = get_parent()
+export var body_path: NodePath
+onready var body: KinematicBody2D = get_node(body_path) if body_path else get_parent()
 
 var velocity := Vector2.ZERO
 

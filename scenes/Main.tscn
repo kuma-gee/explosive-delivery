@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://src/prototyping/player/PlayerMoveTop2D.gd" type="Script" id=1]
+[ext_resource path="res://src/prototyping/player/PlayerMoveTop2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/prototyping/behaviour/PickupArea.gd" type="Script" id=2]
 [ext_resource path="res://src/prototyping/player/PickupHand.gd" type="Script" id=3]
 [ext_resource path="res://src/input/PlayerInput.gd" type="Script" id=4]
@@ -75,9 +75,8 @@ script = ExtResource( 4 )
 script = ExtResource( 5 )
 input_path = NodePath("../PlayerInput")
 
-[node name="PlayerMoveTop2D" type="Node" parent="Player"]
-script = ExtResource( 1 )
-input_path = NodePath("../PlayerInput")
+[node name="PlayerMoveTop2D" parent="Player" instance=ExtResource( 1 )]
+dash_speed = 40
 
 [node name="PickupHand" type="Area2D" parent="Player"]
 position = Vector2( 21, 0 )
@@ -98,3 +97,4 @@ zoom = Vector2( 0.5, 0.5 )
 [editable path="PickupItem"]
 [editable path="PickupItem/Object2D"]
 [editable path="PickupItem/Object2D/Sprite2D"]
+[editable path="Player/PlayerMoveTop2D"]

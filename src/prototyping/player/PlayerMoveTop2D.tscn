@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/prototyping/behaviour/Projectile2D.gd" type="Script" id=1]
+[ext_resource path="res://src/prototyping/player/PlayerMoveTop2D.gd" type="Script" id=2]
+
+[node name="PlayerMoveTop2D" type="Node"]
+script = ExtResource( 2 )
+input_path = NodePath("../PlayerInput")
+
+[node name="Projectile2D" type="Node" parent="."]
+script = ExtResource( 1 )
+deceleration = 200
+weight = 3.0
+body_path = NodePath("../..")
+
+[node name="DashTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
