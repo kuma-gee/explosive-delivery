@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/menu/PlayerSelectMenu.gd" type="Script" id=1]
+[ext_resource path="res://scenes/menu/PlayerSelect.tscn" type="PackedScene" id=2]
+
+[node name="PlayerSelectMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+player_select = ExtResource( 2 )
+
+[node name="Players" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 10

@@ -4,7 +4,7 @@ export var input_path: NodePath
 onready var input := get_node(input_path)
 
 onready var body: KinematicBody2D = get_parent()
-onready var aim_mouse = not input.joypad_input
+onready var aim_mouse = not input.joypad
 
 func _process(_delta):
 	var aim_dir = _get_aim_direction(body)
