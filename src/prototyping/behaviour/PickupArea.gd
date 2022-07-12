@@ -1,5 +1,7 @@
 class_name PickupArea extends Area2D
 
+signal picked_up()
+
 onready var pickup_item: PickupItem = get_parent()
 
 var logger = Logger.new("PickupArea")
@@ -9,6 +11,9 @@ func _set_pickup_owner(node: Node2D):
 	pickup_owner = node
 	monitorable = not node
 	monitoring = not node
+	
+	if node:
+		emit_signal("picked_up")
 
 
 func _process(delta):

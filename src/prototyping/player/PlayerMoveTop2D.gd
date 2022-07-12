@@ -13,6 +13,7 @@ onready var body: Player = get_parent()
 onready var projectile: Projectile2D = $Projectile2D
 onready var dash_timer: Timer = $DashTimer
 
+var logger = Logger.new("PlayerMoveTop2D")
 var velocity = Vector2.ZERO
 var can_dash = true
 
@@ -38,7 +39,13 @@ func _physics_process(delta):
 	var max_speed_change = acceleration if is_moving else deceleration
 	
 	velocity = velocity.move_toward(desired_velocity, max_speed_change * delta)
-	velocity = body.move_and_slide(velocity)
+	
+	var collision = body.move_and_collide(velocity * delta)
+	if collision and collision.collider.has_method("apply_knockback"):
+		var dir = body.global_position.direction_to(collision.collider.global_position).normalized()
+		logger.debug("Applying knockback: %s" % dir)
+		print(collision.collider_velocity)
+		collision.collider.apply_knockback(dir)
 
 
 

@@ -20,7 +20,7 @@ func _ready():
 func _on_interact_released():
 	interact_pressing = -1
 	
-	if not holding_item:
+	if not holding_item or not is_instance_valid(holding_item):
 		_pickup_item()
 	else:
 		if throw_strength > 0:
