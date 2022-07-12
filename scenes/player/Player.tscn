@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://src/prototyping/player/PlayerController.gd" type="Script" id=2]
+[ext_resource path="res://src/prototyping/Object2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/prototyping/player/PlayerMoveTop2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/prototyping/player/AimDirectionTop2D.gd" type="Script" id=5]
+[ext_resource path="res://src/prototyping/player/PickupHand.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 20, 20 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 237, 99 )
+z_index = 1
+collision_layer = 2
+script = ExtResource( 1 )
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Object2D" parent="." instance=ExtResource( 3 )]
+shape = SubResource( 1 )
+
+[node name="AimDirectionTop2D" type="Node" parent="."]
+script = ExtResource( 5 )
+controller_path = NodePath("../PlayerController")
+
+[node name="PlayerMoveTop2D" parent="." instance=ExtResource( 4 )]
+dash_speed = 40
+controller_path = NodePath("../PlayerController")
+
+[node name="PickupHand" type="Area2D" parent="."]
+position = Vector2( 21, 0 )
+collision_layer = 0
+collision_mask = 8
+script = ExtResource( 6 )
+controller_path = NodePath("../PlayerController")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupHand"]
+position = Vector2( -10, 0 )
+shape = SubResource( 2 )

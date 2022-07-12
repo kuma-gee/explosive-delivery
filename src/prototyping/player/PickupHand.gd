@@ -1,7 +1,7 @@
 extends Area2D
 
-export var input_path: NodePath
-onready var input: PlayerInput = get_node(input_path)
+export var controller_path: NodePath
+onready var controller: PlayerController = get_node(controller_path)
 
 export var max_throw_strength = 30
 
@@ -14,28 +14,26 @@ var throw_activate_threshold = 0.2
 var interact_pressing = -1
 
 func _ready():
-	input.connect("just_released", self, "_on_just_released")
-	input.connect("just_pressed", self, "_on_just_pressed")
+	controller.connect("interact_pressed", self, "_on_interact_pressed")
+	controller.connect("interact_released", self, "_on_interact_released")
 
-func _on_just_released(action: String):
-	if action == "interact":
-		interact_pressing = -1
-		
-		if not holding_item:
-			_pickup_item()
+func _on_interact_released():
+	interact_pressing = -1
+	
+	if not holding_item:
+		_pickup_item()
+	else:
+		if throw_strength > 0:
+			var dir = Vector2.RIGHT.rotated(global_rotation)
+			holding_item.throw_item(dir * throw_strength)
+			holding_item = null
+			throw_strength = 0
 		else:
-			if throw_strength > 0:
-				var dir = Vector2.RIGHT.rotated(global_rotation)
-				holding_item.throw_item(dir * throw_strength)
-				holding_item = null
-				throw_strength = 0
-			else:
-				_place_item()
+			_place_item()
 			
 
-func _on_just_pressed(action: String):
-	if action == "interact":
-		interact_pressing = 0
+func _on_interact_pressed():
+	interact_pressing = 0
 			
 
 func _process(delta):

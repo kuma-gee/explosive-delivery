@@ -1,5 +1,7 @@
 extends Control
 
+export var next_scene: PackedScene
+
 export var player_select: PackedScene
 
 onready var player_manager: PlayerManager = Global.player_manager
@@ -23,6 +25,7 @@ func _unhandled_input(event):
 		
 		if _are_all_players_ready():
 			logger.debug("All players ready. Starting game...")
+			get_tree().change_scene_to(next_scene)
 
 
 func _on_player_added(player_idx: int) -> void:

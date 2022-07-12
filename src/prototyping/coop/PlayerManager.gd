@@ -6,7 +6,7 @@ signal player_removed(player_idx)
 export var max_players = 4
 
 var logger = Logger.new("PlayerManager")
-var players = []
+var players = [] setget ,_get_players
 
 func _ready():
 	for i in range(0, max_players):
@@ -63,3 +63,9 @@ func _find_input_by_id(id: String) -> int:
 
 func get_player_input(idx: int) -> PlayerInput:
 	return players[idx]
+
+func _get_players() -> Array:
+	var result = []
+	for p in players:
+		if p: result.append(p)
+	return result
