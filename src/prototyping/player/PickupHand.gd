@@ -3,7 +3,7 @@ extends Area2D
 export var controller_path: NodePath
 onready var controller: PlayerController = get_node(controller_path)
 
-export var max_throw_strength = 30
+export var max_throw_strength := 50
 
 var logger = Logger.new("PickupHand")
 

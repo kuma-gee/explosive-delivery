@@ -197,6 +197,10 @@ window/size/height=1080
 window/stretch/mode="2d"
 window/stretch/aspect="keep_width"
 
+[global]
+
+layer=false
+
 [gui]
 
 theme/custom="res://theme/theme.tres"
@@ -273,6 +277,7 @@ sprint={
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="pickup"
+2d_physics/layer_5="pushable"
 
 [physics]
 

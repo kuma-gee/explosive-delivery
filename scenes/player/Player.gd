@@ -5,8 +5,6 @@ export var deceleration := 2000
 export var max_speed := 500
 export var dash_speed := 1000
 
-export var soft_collision_factor := 5000
-
 onready var controller: PlayerController = $PlayerController
 onready var soft_collision := $SoftCollision
 
@@ -41,13 +39,17 @@ func _move(delta: float):
 	
 	velocity = velocity.move_toward(desired_velocity, max_speed_change * delta)
 
+
 func _dash():
 	var dir = velocity if _is_moving() else Vector2.RIGHT.rotated(global_rotation)
 	velocity = dir.normalized() * dash_speed
 
+
 func _apply_soft_collision(delta: float):
-	if soft_collision.is_colliding() and not _is_moving():
-		velocity += soft_collision.get_push_vector() * delta * soft_collision_factor
+	soft_collision.push_factor = velocity.length()
+	
+	if not _is_moving():
+		velocity += soft_collision.get_push_vector() * delta
 		
 func _is_moving() -> bool:
 	return velocity.length() > 0.01

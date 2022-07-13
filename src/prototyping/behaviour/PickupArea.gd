@@ -1,8 +1,9 @@
 class_name PickupArea extends Area2D
 
 signal picked_up()
+signal placed_down()
 
-onready var pickup_item: PickupItem = get_parent()
+onready var pickup_item = get_parent()
 
 var logger = Logger.new("PickupArea")
 var pickup_owner: Node2D setget _set_pickup_owner
@@ -14,6 +15,8 @@ func _set_pickup_owner(node: Node2D):
 	
 	if node:
 		emit_signal("picked_up")
+	else:
+		emit_signal("placed_down")
 
 
 func _process(delta):
@@ -35,4 +38,5 @@ func place_item():
 
 func throw_item(dir: Vector2):
 	self.pickup_owner = null
-	pickup_item.throw(dir)
+	if pickup_item.has_method("throw"):
+		pickup_item.throw(dir)
