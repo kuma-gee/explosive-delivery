@@ -22,4 +22,8 @@ shape = SubResource( 1 )
 [node name="Object2D" parent="." instance=ExtResource( 2 )]
 scale = Vector2( 0.5, 0.5 )
 
+[node name="ColorRect" parent="Object2D/Sprite2D" index="0"]
+color = Color( 0.65098, 0.521569, 0.317647, 1 )
+
 [editable path="Object2D"]
+[editable path="Object2D/Sprite2D"]
