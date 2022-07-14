@@ -41,7 +41,8 @@ func _move(delta: float):
 
 
 func _dash():
-	var dir = velocity if _is_moving() else Vector2.RIGHT.rotated(global_rotation)
+	var move_dir = controller.get_move_direction()
+	var dir = move_dir if move_dir.length() > 0.01 else Vector2.RIGHT.rotated(global_rotation)
 	velocity = dir.normalized() * dash_speed
 
 

@@ -4,9 +4,10 @@ signal dash()
 signal interact_pressed()
 signal interact_released()
 
-var input: PlayerInput
+var input: PlayerInput setget _set_input
 
-func _ready():
+func _set_input(i):
+	input = i
 	input.connect("just_pressed", self, "_on_just_pressed")
 	input.connect("just_released", self, "_on_just_released")
 
