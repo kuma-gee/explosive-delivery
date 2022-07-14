@@ -1,11 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/car/Car.gd" type="Script" id=1]
+[ext_resource path="res://src/prototyping/behaviour/HitArea.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 20 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 43, 21 )
+
 [node name="Car" type="KinematicBody2D"]
+collision_layer = 256
 collision_mask = 0
 script = ExtResource( 1 )
 
@@ -18,3 +23,11 @@ color = Color( 0.729412, 0.94902, 1, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource( 2 )

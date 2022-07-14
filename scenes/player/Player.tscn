@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/prototyping/player/PlayerController.gd" type="Script" id=2]
 [ext_resource path="res://src/prototyping/Object2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/prototyping/behaviour/SoftCollision.gd" type="Script" id=4]
+[ext_resource path="res://src/prototyping/behaviour/HurtArea.gd" type="Script" id=5]
 [ext_resource path="res://src/prototyping/player/PickupHand.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -13,6 +14,9 @@ extents = Vector2( 23, 23 )
 extents = Vector2( 20, 20 )
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 20, 20 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -46,3 +50,13 @@ controller_path = NodePath("../PlayerController")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupHand"]
 position = Vector2( -10, 0 )
 shape = SubResource( 2 )
+
+[node name="HurtArea" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource( 4 )
+
+[connection signal="hit" from="HurtArea" to="." method="_on_HurtArea_hit"]

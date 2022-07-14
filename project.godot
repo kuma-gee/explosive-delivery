@@ -49,6 +49,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/prototyping/behaviour/FreeOnExit2D.gd"
 }, {
+"base": "Area2D",
+"class": "HitArea",
+"language": "GDScript",
+"path": "res://src/prototyping/behaviour/HitArea.gd"
+}, {
+"base": "Area2D",
+"class": "HurtArea",
+"language": "GDScript",
+"path": "res://src/prototyping/behaviour/HurtArea.gd"
+}, {
 "base": "Node",
 "class": "InputReader",
 "language": "GDScript",
@@ -158,6 +168,8 @@ _global_script_class_icons={
 "Effect": "",
 "FadeEffect": "",
 "FreeOnExit2D": "",
+"HitArea": "",
+"HurtArea": "",
 "InputReader": "",
 "Logger": "",
 "OptParse": "",
@@ -284,6 +296,8 @@ sprint={
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="pickup"
 2d_physics/layer_5="pushable"
+2d_physics/layer_9="destroyable"
+2d_physics/layer_10="hurtarea"
 
 [physics]
 

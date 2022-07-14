@@ -54,3 +54,7 @@ func _apply_soft_collision(delta: float):
 		
 func _is_moving() -> bool:
 	return velocity.length() > 0.01
+
+
+func _on_HurtArea_hit(knockback: Vector2):
+	velocity = knockback
